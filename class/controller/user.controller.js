@@ -4,4 +4,29 @@ class UserController {
     constructor(){
         this.userService = new UserService();
     }
+
+    async registration(req,res){
+        let body ="";
+        req.on("data", async(chunk)=>{
+            body += chunk;
+        })
+
+
+        req.on("end",async ()=>{
+            try {
+                const bodyJson = JSON.parse(body);
+
+                const registrasi = await this.userService.registration(bodyJson);
+                res.writeHead(201, {"Content-Type":"application/json"})
+                res.end(JSON.stringify({message: registrasi,status:"SUccess",code:201}))
+            } catch (error) {
+                res.writeHead(400, {"Content-Type":"application/json"})
+                res.end(JSON.stringify({message: error.message,status:"Fai",code:400},))
+            }
+        })
+    }
+
+
 }
+
+module.exports = UserController;

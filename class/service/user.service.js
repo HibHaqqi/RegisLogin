@@ -5,10 +5,27 @@ class UserService {
         this.userModel = new UserModel();
     }
     async findByEmail(inputEmail){
-        const userModel = await this.userModel.findByEmail(inputEmail);
-        if(userModel === userModel.)
+        const email = await this.userModel.findByEmail(inputEmail);
+        return email
+    }
+    async registration(payload){
+        try {
+            const {email} = payload;
+            const user = await this.findByEmail(email);
+            if (user) {
+                throw new Error("user sudah terdaftar")
+                
+            }
+            const newUser = new UserModel(payload.id,payload.email,payload.password)
+            await this.userModel.save(newUser)
+
+            return "user tersimpan"
+        } catch (error) {
+            throw error;
+        }
+
     }
 
 }
 
-modeule.exports = UserService;
+module.exports = UserService;
