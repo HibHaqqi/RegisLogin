@@ -18,7 +18,7 @@ class UserController {
                 res.end(JSON.stringify({message: login,status:"SUccess",code:201}))
             } catch (error) {
                 res.writeHead(400, {"Content-Type":"application/json"})
-                res.end(JSON.stringify({message: error.message,status:"user sudah ada",code:400},))
+                res.end(JSON.stringify({message: error.message,status:"user tidak terdaftar password salah",code:400},))
             }
         })
        

@@ -29,10 +29,12 @@ class UserService {
         try {
             const { email, password } = payload;
             const user = await this.findByEmail(email);
-            const code = await this.findByEmail(password);
+            if (!user) {
+                throw new Error("user tidak terdaftar")
+            }
             if(user){
-                if (user && code == payload) {
-                    throw new Error("login berhasil")
+                if (user && user.password == password) {
+                    return user 
             }
             
             }
