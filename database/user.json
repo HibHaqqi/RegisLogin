@@ -8,5 +8,15 @@
     "id": "2",
     "email": "tino@example.com",
     "password": "tino"
+  },
+  {
+    "id": "4",
+    "email": "dado@example.com",
+    "password": "dado"
+  },
+  {
+    "id": "5",
+    "email": "dadi@example.com",
+    "password": "dadi"
   }
 ]
