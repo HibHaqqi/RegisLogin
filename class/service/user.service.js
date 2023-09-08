@@ -32,11 +32,11 @@ class UserService {
             if (!user) {
                 throw new Error("user tidak terdaftar")
             }
-            if(user){
-                if (user && user.password == password) {
-                    return user 
-            }
-            
+
+            if (user && user.password == password) {
+                return user
+
+
             }
             throw new Error("Password tidak sesuai")
         } catch (error) {
